@@ -1,0 +1,189 @@
+## que es un contenedor docker
+los contenedore sdocker son una forma de virtualizacion ligera
+que permiten empaquetar y distribuir aplicaciones junto con todas sus
+dependencia y configuraciones. encapsula la aplicacion y sus entornos de ejecucion,
+facilitando la implementacion de aplicaciones de manera consistente en diferentes
+entornos.
+
+##imagen docker
+es paquete que incluye una aplicacion con todas sus dependencias y como
+ejecutar la aplicaicon, como codigo, librerias, dependencias y configuraciones.
+se utiliza como plantilla para crear contenedores. apartir de una imagen 
+podemos construir un contenedor. que es un archivo llamamado docker file 
+que contine la informacion para crear el entorno de la aplicacion.
+
+##Contenedor docker
+es una instancia en ejecucion de una imagen docker. las imagenes son estaticas
+y los contenedores son dinamicos y se pueden ejecutar detener. mover o eliminar.
+los contenedores van a compartir el kernel del SO, pero estan aislados entre si.
+estar aislados garantiza que una aplicacion y sus dependencias se ejecuten 
+de manera consistente sin importar en el entorno que se encuentre.
+
+##Docker HUb
+es un registro en line donde se pueden compartir y administrar aplicaciones multi-contenedor
+los desarroladores pueden descargar imagenes de docker, es un servicio en la nueve
+donde se pueden bajar y ya utilizar directamente esas imagenes.
+
+##Docker compose
+Es una herramienta que permite definir y administrar aplicaciones multi-contenedor.
+podemos definir la configuracion de varias imagenes, sus relaciones y como se 
+deben ejecutar en conjunto.
+
+## Docker Swarm y Kubernetes
+son herramientas de orquestacion para contenedores Docker.
+permiten gestionar y escalar autoaticamente aplicaciones distribuidas en clusters 
+de contenedores.
+
+##Por que usar contenedores?
+
+##Portabilidad
++ Los contenedores encapsulan una aplicacion y todas sus dependencias, lo que 
+facilita su transporte y ejecucion en diferentes entornos
+
+##Eficiencia en el uso de recurso
++ Los contenedores comparten el kernel del SO host y solo incluyen
+los componentes necesarios para ejecutar la aplicacion.
+
+##Aislamiento
++ Aunque los contenedores comparten en kernel del SO, estan aislados.
+
+##Reproductibidad
++ Al definir el entorno de ejecucion de una aplicacion en un archivo
+Dockerfile, se proporciona una descripcion detallada y reproducible de la configuracion.
+facilita la comunicacion en tre programadores y en todas las maquinas se va a ejecutar de la 
+misma manera
+##Escalabilidad
++ Los contenedores facilitan la escalabilidad horizontal, lo que significa
+que podemos ejecutar multiples instancias de una app en varios contenedores y 
+ditribuir la carga entre ellos. 
+
+##Desarrollo agil y DevOps
++los contenedores son una herramienta clave en entornos de desarrollo agil y 
+en practicas DevOps.
+
+##Bare metal (meta descubierto)
++ se refiere a la ejecucion de un SO directamente sobre el HW fisico 
+de una mauquina sin una capa de virtualizacion intermedia.
+mejor rendimiento, acceso directo a los recursos fisicos, no hay costos de rendimiento que si hay en VM
+Ideal cuando las aplicaciones necesitan un rendimiento optimo ya acceso
+directo al SO, como BD de alto funcionamiento.
+
+##Maquina Virtual 
++ creacion de una capa de virtualizacion sobre el HW fisico, permitiendo 
+que se pueda correr multiple SO en una maquina fisica.
+cada maquina virtual opera de manera aislada,migracion y escalabilidad
+Ideal para consolidacion de servidores y para ejecucion de multiple SO
+en una misma maquina fisica.
+
+##Contenedores
++ son entornos lijeros, comparten el mismo kernel de SO, pero tambien 
+estan aislados en terminos de archivos, procesos y recursos.
+tiene eficiencia a la hora de utilizar recursos, portabilidad consistente
+en distintos entornos, pueden escalarse rapidamente para cargas variables.
+
+Ideal para implementacion agil, portable ye escalable de entornoes
+de desarrollo y despliege continuo.
+
+##OCI - Open Container Initiative
+
++ OCI es una iniciativa de codigo abierto que tiene como objetivo establecer estandares
+abiertos para el fromato de contenedor y las interfaces de ejecucion.
+incluyen especificaciones de imagenes OCI y las especificaciones de tiempo de ejecucion OCI.
+Es un standar abierto para garantizar la operativilidad de diferentes herrramientas de los contenedores,
+lo que permite que los desarrolladores trabajar con contenedores mas 
+flexible sin depender de una unica implementacion o proveedor.
+
+##Name Space
+
++ los namespace son las caracteristicas kernel de Linux que Docker utiliza
+para crear entornos aislados para los contenedores. estos entornos
+proporcionan recurosos como procesos de procesos de archivo, usuarios, red,etc.
+
+    ##PID namespace
+    +Prorciona aislamiento de proceso. cada contenedor ejecuta en su 
+    propio estacio de proceso, lo que significa que solo afectan a los procesos
+    de ese cotenedor. estan aislados.
+
+    ## Network namespace
+    + proporciona aislamiento de red. cada contenedor tiene su interfaz de red
+    y su tabla de enrutamiento y permite que cada uno tenga su propia 
+    configuracion de red sin interferir con otros contenedores del host.
+
+    ## Mount namespace
+    + proporciona aislamiento de sistemas de archivos. Cada contenedor
+    tiene su propio sistema de archivos raiz aislado, lo que significa que no puede acceder
+    de manera directa a archivos del host u otros contenedores.
+
+    ##IPC namespace
+    + proporciona aislamiento de comunicacion interproceso (IPC),
+    los contenedores no pueden comunicarse directamente atraves de de mecanismos
+    de IPC.
+
+    ## UTS namespace
+    + proporciona aislamiento del nombre del sistema. cada contenedor tiene su propio
+    nombre de host y dominio, lo que permite tener una identidad de sistema
+    diferente.
+
+##CGROUPS
++ son una caracteristicas del kernel de linux utilizada para limitar, contabilizar,
+y aislar los recursos del sistema. como cpu, memoria, almacenamiento,etc.
+que se le asigna a los contenedores y asegurar un uso equitativo de los recursos del sistema,
+aportando limites de recursos por contenedor, evitando que una aplicacion de un contenedor,
+ocupe todos los recursos y genere que otros contenedores del host fallen.
+
+    ##Limitacion de CPU:
+    + docker puede establecer limites en el uso del CPU para que cada contedor tenga un max
+
+    ##Limitacion de memoria 
+    + se puede configurar limites en la cantidad de memoria RAM, que un contenedor
+    puede usar.
+
+    ## Limitacion de E/S:
+    + Docker puede controlar y limitar el acceso a los recursos de almacenamiento.
+    y la velocidad de la E/S de los datos de un contenedor.
+
+    ##Priorizacion de procesos:
+    + Docker puede asignar prioridades a los procesos dentro de un contenedor, en funcion
+    de las necesidades de rendimeinto.
+
+##Union files sistems (sistema de union de archivos)
++ se refiere a la tecnologia que permite combianar varios sistemas de archivos
+en uno solo. permite que sea mas eficiente el uso de disco, permitiendo eque las 
+capas qeu no han cambiado entre versiones de imagenes, puedan ser cambiadas.
+
+
+##Docker Engine vs Docker desktop
+
++ DOcker engine es el componente central de Docker.Es un entorno de ejecucion
+ligero y portatil para contenedores. incluye un demonio que gestona los contenedores
+en el sistema en una API y una interfaz de linea de comando para que los usuarios
+interactuen con Docker, es el componente que se instala en el SO para habilitar la creacion y
+creacion de los contenedores
++Docker desktop es una aplicaicon para windows y macOS que facilita la instalacion
+y el uso en entorno de desarrollo local. proporciona una experiencia grafica para gestionar
+contenedores,imagenes entre otras configuraciones. este ya incluye a docker engine,
+junto con la interfaz de usuario y otras herramientas, empaquedado en una aplicaciones.
+
+##DOCKER REGISTRY##
+
+- servidor donde se almacenan las imagenes de docker 
+- proporciona contenedores que podes gestionar en tu infraestructura, es util 
+para tener un contenedor privado teniendo el control y acceso.
+
+##DOCKER HUB##
+- es un servicio de contenedores prorcionado por docker. este utiliza como base a 
+docker registry, es una implementacion publica y hospeda de docker registri y la mas usada por la comunidad.
+
+**funcioanlidades**
+	- interfaz web para gestionar las imagenes
+	- repositoris publicos y privados
+	- integracion con github y bitbucket.
+	- comunicacion y comunidad
+	- planes de subscripcion 
+** diferencia clave**
+	- alcance, docker hub es publica y comercial de docker registry con 	 servicios adicionales
+	- docker registry lo podes implementar de manera privada.
+	- funcinalidad: docker hub ofrece otras funcionalidades como la 		automatizacion, autenticacion e interfaz web amigable.
+	- docker registry es la funcionalidad basica de registro y distribucion de 	imagenes y extenderlo con herramientas adicionales.
+	- uso publico privado: docker hub es para compartir imagenes y docker 	registry es ideal para entornos privados donde necesitas gestionar 	internamento el acceso a estas.
+##

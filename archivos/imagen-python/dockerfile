@@ -1,0 +1,10 @@
+##esto nos va a ayudar a construir la imagen con una imagen modelo
+
+FROM python:3.7-alpine
+
+COPY app.py /app/app.py
+
+WORKDIR /app
+
+CMD ["python", "app.py"]
+

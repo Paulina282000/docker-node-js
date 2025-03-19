@@ -1,0 +1,1 @@
+print("DOCKER HUB test SUCCESS")

@@ -1,0 +1,18 @@
+comandos 
+
+version de docker : docker --version 
+configuracion qeu tenemos de docker : docker info 
+
+descarga una imagen desde dockerHub : docker pull [nombre de la imagen sacado de hubdocker]
+lista de imagenes que tenemos : docker image 
+contenedores que se estan ejecutando : docker ps
+ejecutar el contenedor descargado: docker run -it ubuntu:lastest /bin/bash
+    docker run > son el comando principal para ejecutar un contenedor en docker 
+    -it > especifica que el contenedor tiene que tener una terminal interactiva, vamos a interactuar
+    con este contenedor atraves de su terminal 
+    ubuntu:lastest > cual es la imagen qeu se utilizara para crear el contenedor.
+    /bin/bash > comando que se ejecutara en el contenedor, bash le da accesos a la terminal en el contenedor.
+
+cuando ejecute comandos ya no son de windows si no que son de linux (ubuntu).
+
+muestra todos los contenedor incluyendo los detenidos : docker ps -a
