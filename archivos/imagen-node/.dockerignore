@@ -1,0 +1,4 @@
+##archivos que queresmos ignorar como depnedencias,logs, archivos
+##de depnedencias locales ,etc
+##docker al construir la imagen no tiene en cuenta esos archivos
+

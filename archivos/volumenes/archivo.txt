@@ -1,0 +1,1 @@
+hola archivo windowa que esta compartido en un contenedor docker 

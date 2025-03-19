@@ -5,5 +5,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen (3001, () => {
-    console.log('Servidor corriendo en el puerto https://localhost:3001');
+    console.log('Servidor corriendo en el puerto http://localhost:3001');
 });

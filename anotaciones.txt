@@ -186,4 +186,39 @@ docker registry, es una implementacion publica y hospeda de docker registri y la
 	- funcinalidad: docker hub ofrece otras funcionalidades como la 		automatizacion, autenticacion e interfaz web amigable.
 	- docker registry es la funcionalidad basica de registro y distribucion de 	imagenes y extenderlo con herramientas adicionales.
 	- uso publico privado: docker hub es para compartir imagenes y docker 	registry es ideal para entornos privados donde necesitas gestionar 	internamento el acceso a estas.
-##
+
+##Imagenes en docker
+
+son como los planos de una casa. continen toda la informacion necesaria para contruirla desde los cimientos hasta el techo.
+apartir de la imagen se construye un contenedor.
+	- es un archivo inmutable que contiene todo lo necesario para ejecutar una aplicación, incluyendo el código, bibliotecas, dependencias, variables de entorno y configuraciones. Se 	crea a partir de un Dockerfile que define paso a paso cómo se debe construir el entorno de la aplicación. Las imágenes sirven como plantillas para generar contenedores, permitiendo 	que la aplicación se ejecute de manera consistente y reproducible en cualquier entorno.
+-Contenedor: es una instancia en ejecucion de una imagen de DOcker. La imagen actua como plantilla inmutable que contiene el codigo y las dependencias, y el contenedor es el entorno aislado donde se ejecuta.
+Las  iamgenes son como un manual de instrucciones, que puede compartirse facilmente y usar en cualquier lugar donde se haya instalado docker.
+Por ejemplo en una tienda online se podria usar una imagen de docker que ya tenga pre-instalado el servidor web, base de datos y software de comercion electronico. luego lo unico que deberiamos hacer es personalizar la informacion y tus productos.
+las imagenes de docker se usan para crear los contenedores (la casa real). es una instancia en ejcucion de la imagen, con todos sus recursos aislados de otros contenedores y del sistema host.
+los contenedores son faciles y eficientes.
+Para hacer la tienda deberiamos, descargar la imagen y atraves de esa imagen nosotros corremos el contenedor.
+los contenederos son seguros, portaliles y agiles, se pueden iniciar, detener y mover facilmente y son ideales para implementar aplicaciones en entornos de desarrollo, prueba y produccion.
+
+Necesita la imagen: 
++un SO
++las aplicaciones son los servidores, apis, base de datos que van a estar en la imagen
++las configuraciones: son los detalles personalizados como contraseñas, wifi, zona horaria, etc.
+
+##Creacion de imagenes en dockerFiles##
+un archivo docker flie es un documento de texto que contiene una serie de instrucciones que utiliza docker para construir una imagen.
+estas instrucciones describen los pasos necesarios para crear una imagen especifica que peuede ser ejecutada para ejecutar un contenedor Docker.
+
+##Contiene las siguientes instrucciones (mas comunes)
+
+FROM : especifica la imagen base desde la cual se construira la nueva imagen.
+RUN: ejecuta comandos dentro del contenedor durante el proceso de contruccion de la imagen.
+
+COPY y ADD: copian archivos y directorios desde el sistema de archivos local a la imagen.
+
+WORKDIR: establece el directorio de trabajo para los comandos RUN, CDM, ENTRYPOINT, COPY y ADD que siguen en el DOckerfile.
+
+EXPOSE: espone puertos en los contenedores basados en la imagen. SI creamos un servidor necesitamos puertos para que estos se ejecuten
+
+CMD y ENTRYPOINT: especifican el comando predenterminado a ejecutar cuando se inicie el contenedor basado en la imagen.
+
