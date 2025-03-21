@@ -222,3 +222,54 @@ EXPOSE: espone puertos en los contenedores basados en la imagen. SI creamos un s
 
 CMD y ENTRYPOINT: especifican el comando predenterminado a ejecutar cuando se inicie el contenedor basado en la imagen.
 
+##Persistencia de datos: volumenes y bind mounts
+
+podemos tener aplicaciones corriendo en los contenedores y esas aplicaciones pueden generar datos. cuando esas aplicaciones generan datos y nosotros eliminamos el contenedor lo que va a pasar es que los datos se van a perder. hay que poder hacer  un backup para que los mismos no se borren.
+para soluconarlo, se hace persistencia de datos en docker.
+
+Hay dos posibles soliciones
+Volumenes y bind mounts 
+volumenes> son directorios especiales que se montan dentro de un contenedor y hacec que los datos persistan inclusodespues de que el contenedor se elimina, pudiendo de esta manera recuperar datos de forma perisistente.
+bind mounts (tambien conocido como enlace de datos)> son una forma de montar un directorio/carpeta del sistema de archivo host, de nuestro equipo, para  montar esa carpeta. esto va a permitir compartir archivos entre el host y el contenedor, es utilpara el desarrollo.
+
+##TIPOS DE REDES## 
+
+redes en Docker: tipos de redes y como utilizarlas 
+tipos de redes: son fundamentales para aislar y conectar contenedores. Permite definir distintos tipos de netorno de red y gestionar la comunicacion entre ellos.
+	- Bridge: es la por defecto, la mas comun. crear una red virtual aislada y asigna 	direcciones IP Privadas en los contenedores. los contenedores pueden comunicarse 	entre ellos si estan dentro de la red, pero no pueden comunicarse con el host o con 		otras redes.
+	- Host: asigna la misma direccion IP que el host, nuestor sistema operativo va a		 tener el mismo IP que el contenedor. Permite que le contenedor sea accesible `		directamente del host y desde otras redes. es importante ya que 
+	-None: no se leasigna ninguna IP y para poder conectarse con otros contenederos y 		host. nos sirve para que nuestro contenedor no sea accesible.
+
+
+
+##DOCKER Compose ##
+
+docker compose: es una herramienta que permite definir y ejecutar 
+aplicaciones docker de multiples contenedores.
+podemos automatizar el proceso de levantar contenedores,
+facilitando la gestion de la aplicacion y la orquestacion de los serviciosque 
+estas componen.
+herramienta por separada de docker que se instala junto con docker
+en linux se debe instalar, en windows ya viene instalada.
+va a permitir ejecutar multiples contenedores apartir de un archivo YAML.
+Para que nos sirve docker compose?
+es una herramienta fundamental para el desarrollo ya que nos permite 
+ejecutar, multiples contenedores en docker, simplificando la gestion de aplicaciones multicontedores.
+define y configura toda la aplicacion en un unico archivo.yaml, evitando 
+tener que ejecutar contenedores de forma individual.
+agrupa los contenedores relacionados en un unico servico, facilitando la gestion y mantenimiento.
+tambien permite definir dependecias entre servicios y garantizando que los contenedores se inicien
+en un orden correcto.
+a su vez nos ayuda a la productividad ya que estamos automatizando el inicio de multiples contenedoresen un unico 
+comando, estamos elmiminado la necesidad de ejecutar comando por comando.
+nos permite relizar configuraciones de volumenes, red de forma declarativa desde el archivo.
+tambine promueve la estandarizacion y mejora la portabilidad, los archivos yaml son portables desde
+diferentes entornos, desde desarrollo local hasta produccion.
+por ejemplo la configuracion de aplicaciones web, docker compose es  fundamental para ejecutar
+paginas web que consisten en mutiples servicios como servicios, web, BD, cache, etc.
+Nos permite a su vez orquestar los entornos de desarrollo, configurando entornos locales con multiples 
+contenedores para distintos lenguajes de programacion y diferentes herramientas.
+ayuda tambien en la implementacion de micro servicios y gestion de app de micro servicios, donde cada servicio se 
+ejecuta en su propio contenedor,
+ayuda en la ejecucion de pruebas de integracion ya que mepite configurar 
+pruebas de integracion de manera rapida y eficiente para app multi contenedor.

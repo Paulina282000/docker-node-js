@@ -1,1 +1,18 @@
 hola desde docker desde el contenedor
+
+Bridge 
+
++ crea una red virtual aislada y asigna direcciones IP privadas en los con.
+
+docker run -d --name ngnx -p 80:80 --network my-network
+
+Host
++ el host(SO) la misma ip que el contenedor
+
+docker run -d --name mysql -p 3306:3306 --network host
+
+None
++ no podra comunicarse con otros contenedores ni con el host
+
+docker run -d --name data-processor --network none 
+
