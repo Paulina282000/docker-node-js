@@ -1,0 +1,34 @@
+##formato yml muy usado en linux, se tienen que respetar las sintaxis
+
+
+services:
+  web:
+    build: ./web
+    ports:
+      - "8000:80"
+    depends_on:
+      - app
+
+  app:
+    build: ./app
+    ports:
+      - "5000:5000"  # Opcional, útil para debug si querés acceder directo sin nginx
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: pauli
+      POSTGRES_PASSWORD: supersegura
+      POSTGRES_DB: midb
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  redis:
+    image: redis
+
+volumes:
+  db-data:
+
